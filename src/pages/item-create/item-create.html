@@ -24,23 +24,52 @@
 
 
 <ion-content>
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
-    <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
-    <div class="profile-image-wrapper" (click)="getPicture()">
-      <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
-        <ion-icon name="add"></ion-icon>
-        <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
-        </div>
-      </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
-    </div>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="done()">
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
+        <ion-input type="text" value="1" formControlName="player_id"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
+        <ion-input type="text" value="1" formControlName="game_id"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-select formControlName="playstyle">
+          <ion-option value="any">Any</ion-option>
+          <ion-option value="casual">Casual</ion-option>
+          <ion-option value="competitive">Competitive</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select formControlName="skill">
+          <ion-option value="any">Any</ion-option>
+          <ion-option value="beginner">Beginner</ion-option>
+          <ion-option value="experienced">Experienced</ion-option>
+          <ion-option value="veteran">Veteran</ion-option>
+          <ion-option value="pro">Pro</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select formControlName="region">
+          <ion-option value="any">Any</ion-option>
+          <ion-option value="na">North America</ion-option>
+          <ion-option value="eu">Europe</ion-option>
+          <ion-option value="sa">South America</ion-option>
+          <ion-option value="ru">Russia</ion-option>
+          <ion-option value="cn">China</ion-option>
+          <ion-option value="kr">Korea</ion-option>
+          <ion-option value="sea">South East Asia</ion-option>
+          <ion-option value="anz">Australia /- New Zealand</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-select formControlName="communication">
+          <ion-option value="any">Any</ion-option>
+          <ion-option value="mic">Mic</ion-option>
+          <ion-option value="nomic">No Mic</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="{{ 'ITEM_COMMENT_PLACEHOLDER' | translate }}" formControlName="comment"></ion-input>
       </ion-item>
     </ion-list>
   </form>
